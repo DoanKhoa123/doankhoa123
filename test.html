@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hiển thị tệp Word trên web</title>
+</head>
+<body>
+    <button onclick="displayWord()">Hiển thị Word</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+    <script>
+        function displayWord() {
+            var filename = 'Phieudanhgiadrl.docx'; 
+            fetch(filename)
+                .then(response => response.blob())
+                .then(blob => {
+                    var blobURL = URL.createObjectURL(blob);
+                    window.open(blobURL); 
+                })
+                .catch(error => console.error('Error loading the document:', error));
+        }
+    </script>
+</body>
+</html>
